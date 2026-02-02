@@ -17,67 +17,77 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
-        /* Regra geral para garantir que imagens não estourem a tela */
-        img {
-            max-width: 100%;
-            height: auto;
+        /* Regra geral para imagens não estourarem */
+        img { 
+            max-width: 100%; 
+            height: auto; 
         }
 
-        /* MEDIA QUERY: Regras que só funcionam em Celulares/Tablets (telas menores que 768px) */
+        /* Esconde o botão do menu hambúrguer no computador */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: #333;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        /* =========================================
+           MEDIA QUERY: Regras só para Celulares/Tablets (< 768px) 
+        ========================================= */
         @media (max-width: 768px) {
             
-            /* Ajuste do Container para não colar nas bordas */
-            .container {
-                width: 95%;
-                padding: 0 15px;
-                box-sizing: border-box;
-            }
+            /* Ajuste do Container Geral */
+            .container { width: 95%; padding: 0 15px; box-sizing: border-box; }
 
-            /* Menu de Navegação: Empilha os links verticalmente */
-            nav ul {
-                flex-direction: column;
-                padding: 0;
-                text-align: center;
-            }
-            nav ul li {
-                margin: 10px 0;
-            }
-
-            /* Sobre Mim: Foto em cima, texto embaixo */
-            .about-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .about-text {
-                padding-left: 0;
-                margin-top: 20px;
-            }
-
-            /* Projetos: Transforma o Grid em 1 coluna única */
-            .projects-grid {
-                display: grid;
-                grid-template-columns: 1fr !important; /* Força 1 coluna */
-                gap: 30px;
-            }
-
-            /* Skills: Empilha as colunas de skills */
-            .skills-table {
+            /* --- CONFIGURAÇÃO DO MENU MOBILE --- */
+            nav .container {
                 display: flex;
                 flex-direction: column;
+                align-items: center;
             }
-            .skill-column {
+            .menu-toggle { display: block; margin-bottom: 10px; }
+            nav ul {
+                display: none; /* Escondido inicialmente */
+                flex-direction: column;
                 width: 100%;
-                margin-bottom: 30px;
+                text-align: center;
+                background-color: #f8f9fa; /* Cor de fundo leve para o menu */
+                padding: 15px 0;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra leve */
             }
+            nav ul.active { display: flex; /* Mostra quando clica */ }
+            nav ul li { margin: 10px 0; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+            nav ul li:last-child { border-bottom: none; }
 
-            /* Formulário: Garante que os campos ocupem a largura toda */
-            .contact-form input, 
-            .contact-form textarea {
-                width: 100%;
-                box-sizing: border-box; /* Garante que o padding não aumente a largura */
+            /* --- CORREÇÃO DAS IMAGENS DOS PROJETOS NO CELULAR --- */
+            .project-card img {
+                /* Define uma altura máxima para não ficar gigante verticalmente */
+                max-height: 220px; 
+                width: 100%; 
+                
+                /* GARANTE QUE A IMAGEM APAREÇA INTEIRA SEM CORTAR */
+                object-fit: contain; 
+                
+                /* Centraliza a imagem se ela for mais estreita que o card */
+                display: block;
+                margin: 0 auto 15px auto; /* margem inferior para separar do texto */
+                
+                /* Opcional: cor de fundo sutil caso a imagem seja muito estreita */
+                background-color: #fcfcfc;
+                border-radius: 8px; /* Arredonda um pouco os cantos da imagem */
             }
-            
-            /* Ajuste de tipografia para telas pequenas */
+            /* -------------------------------------------------- */
+
+
+            /* Outros ajustes de fluxo para mobile */
+            .about-content { flex-direction: column; text-align: center; }
+            .about-text { padding-left: 0; margin-top: 20px; }
+            .projects-grid { grid-template-columns: 1fr !important; gap: 30px; }
+            .skills-table { flex-direction: column; }
+            .skill-column { width: 100%; margin-bottom: 30px; }
+            .contact-form input, .contact-form textarea { width: 100%; box-sizing: border-box; }
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
         }
@@ -98,7 +108,10 @@
 
 <nav>
     <div class="container">
-        <ul>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i> MENU
+        </div>
+        <ul class="nav-list">
             <li><a href="#about">Sobre</a></li>
             <li><a href="#projects">Projetos</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -114,7 +127,6 @@
             <img src="assets/images/profile.png" alt="Gustavo Tundisi" class="profile-photo">
             <div class="about-text">
                 <p>Sou um analista de dados em formação focado em transformar conjuntos de dados complexos em diagnósticos precisos. Meus estudos concentram-se na utilização de dados para a resolução de problemas reais, ajudando a embasar a tomada de decisões estratégicas.</p>
-
                 <p>Desenvolvendo competências em Python, SQL e Power BI, busco não apenas visualizar, mas identificar padrões e tendências ocultas através da análise de dados.</p>
             </div>
         </div>
@@ -174,7 +186,6 @@
     <div class="container">
         <h2>Skills</h2>
         <div class="skills-table">
-            
             <div class="skill-column">
                 <div class="skill-header">
                     <i class="fas fa-chart-pie"></i>
@@ -184,7 +195,6 @@
                     <li>Power BI</li>
                 </ul>
             </div>
-
             <div class="skill-column">
                 <div class="skill-header">
                     <i class="fas fa-search-plus"></i>
@@ -197,7 +207,6 @@
                     <li>Google Sheets</li>
                 </ul>
             </div>
-
             <div class="skill-column">
                 <div class="skill-header">
                     <i class="fas fa-cogs"></i>
@@ -210,7 +219,6 @@
                     <li>Pentaho</li>
                 </ul>
             </div>
-
         </div>
     </div>
 </section>
@@ -218,9 +226,8 @@
 <section id="contact" class="section">
     <div class="container">
         <h2>Envie uma mensagem</h2>
-        
         <form action="https://formsubmit.co/tundisigustavo.o@gmail.com" method="POST" class="contact-form">
-           <div class="form-group">
+            <div class="form-group">
                 <label for="name">Nome</label>
                 <input type="text" name="name" id="name" placeholder="Your name" required>
             </div>
@@ -236,9 +243,7 @@
                 <label for="message">Mensagem</label>
                 <textarea name="message" id="message" rows="6" placeholder="Your message" required></textarea>
             </div>
-            
             <button type="submit" class="btn">Enviar Mensagem</button>
-
         </form>
     </div>
 </section>
@@ -248,6 +253,21 @@
         <p>&copy; 2026 Gustavo Tundisi. Todos os direitos reservados.</p>
     </div>
 </footer>
+
+<script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navList = document.querySelector('.nav-list');
+
+    mobileMenu.addEventListener('click', () => {
+        navList.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-list li a').forEach(link => {
+        link.addEventListener('click', () => {
+            navList.classList.remove('active');
+        });
+    });
+</script>
 
 <script src="assets/js/main.js"></script>
 
