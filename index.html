@@ -17,79 +17,91 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
-        /* Regra geral para imagens não estourarem */
-        img { 
-            max-width: 100%; 
-            height: auto; 
+        /* Regra geral para imagens */
+        img { max-width: 100%; height: auto; }
+
+        /* AJUSTE DO CABEÇALHO (Mais compacto no Desktop) */
+        header {
+            padding: 30px 0; /* Reduzido de 60px/100px para 30px */
+        }
+        header h1 {
+            font-size: 2.5rem; /* Reduzido levemente */
+            margin-bottom: 5px; /* Menos espaço entre nome e cargo */
+        }
+        header p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
         }
 
-        /* Esconde o botão do menu hambúrguer no computador */
+        /* Botão do Menu (Invisível no PC) */
         .menu-toggle {
             display: none;
             font-size: 1.5rem;
-            color: #333;
             cursor: pointer;
             padding: 10px;
+            /* Cor Branca para aparecer no fundo azul */
+            color: #ffffff !important; 
+            border: 1px solid rgba(255,255,255,0.3); /* Borda sutil para ajudar no clique */
+            border-radius: 5px;
         }
 
         /* =========================================
-           MEDIA QUERY: Regras só para Celulares/Tablets (< 768px) 
+           MEDIA QUERY: Celulares/Tablets (< 768px) 
         ========================================= */
         @media (max-width: 768px) {
             
-            /* Ajuste do Container Geral */
             .container { width: 95%; padding: 0 15px; box-sizing: border-box; }
 
-            /* --- CONFIGURAÇÃO DO MENU MOBILE --- */
+            /* --- MENU MOBILE --- */
             nav .container {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
             }
-            .menu-toggle { display: block; margin-bottom: 10px; }
+            .menu-toggle { display: block; margin-bottom: 15px; }
+            
             nav ul {
-                display: none; /* Escondido inicialmente */
+                display: none;
                 flex-direction: column;
                 width: 100%;
                 text-align: center;
-                background-color: #f8f9fa; /* Cor de fundo leve para o menu */
+                background-color: #ffffff; /* Fundo BRANCO para a lista */
                 padding: 15px 0;
                 border-radius: 8px;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra leve */
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             }
-            nav ul.active { display: flex; /* Mostra quando clica */ }
+            
+            /* Cor dos Links no Mobile (Cinza Escuro para ler no fundo branco) */
+            nav ul li a {
+                color: #333333 !important; 
+                font-weight: bold;
+            }
+
+            nav ul.active { display: flex; }
             nav ul li { margin: 10px 0; border-bottom: 1px solid #eee; padding-bottom: 8px; }
             nav ul li:last-child { border-bottom: none; }
 
-            /* --- CORREÇÃO DAS IMAGENS DOS PROJETOS NO CELULAR --- */
+            /* --- IMAGENS DOS PROJETOS (Ajuste Mobile) --- */
             .project-card img {
-                /* Define uma altura máxima para não ficar gigante verticalmente */
                 max-height: 220px; 
                 width: 100%; 
-                
-                /* GARANTE QUE A IMAGEM APAREÇA INTEIRA SEM CORTAR */
                 object-fit: contain; 
-                
-                /* Centraliza a imagem se ela for mais estreita que o card */
                 display: block;
-                margin: 0 auto 15px auto; /* margem inferior para separar do texto */
-                
-                /* Opcional: cor de fundo sutil caso a imagem seja muito estreita */
+                margin: 0 auto 15px auto;
                 background-color: #fcfcfc;
-                border-radius: 8px; /* Arredonda um pouco os cantos da imagem */
+                border-radius: 8px;
             }
-            /* -------------------------------------------------- */
 
-
-            /* Outros ajustes de fluxo para mobile */
+            /* Outros ajustes mobile */
             .about-content { flex-direction: column; text-align: center; }
             .about-text { padding-left: 0; margin-top: 20px; }
             .projects-grid { grid-template-columns: 1fr !important; gap: 30px; }
             .skills-table { flex-direction: column; }
             .skill-column { width: 100%; margin-bottom: 30px; }
             .contact-form input, .contact-form textarea { width: 100%; box-sizing: border-box; }
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
+            
+            /* Reduz ainda mais a fonte no celular se precisar */
+            header h1 { font-size: 2rem; }
         }
     </style>
 </head>
