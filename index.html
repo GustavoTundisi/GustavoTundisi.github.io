@@ -4,40 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!--💡UPDATE: Change the title to your name-->
     <title>Gustavo | Data Portfolio</title>
       
-    <!--💡UPDATE: Add your favicon here. You can generate one at realfavicongenerator.net-->
     <link rel="icon" href="logo.svg" type="image/svg+xml">
     
-    <!-- Google Fonts for Elegant Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
-    <!-- Your Stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* Regra geral para garantir que imagens não estourem a tela */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* MEDIA QUERY: Regras que só funcionam em Celulares/Tablets (telas menores que 768px) */
+        @media (max-width: 768px) {
+            
+            /* Ajuste do Container para não colar nas bordas */
+            .container {
+                width: 95%;
+                padding: 0 15px;
+                box-sizing: border-box;
+            }
+
+            /* Menu de Navegação: Empilha os links verticalmente */
+            nav ul {
+                flex-direction: column;
+                padding: 0;
+                text-align: center;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            /* Sobre Mim: Foto em cima, texto embaixo */
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-text {
+                padding-left: 0;
+                margin-top: 20px;
+            }
+
+            /* Projetos: Transforma o Grid em 1 coluna única */
+            .projects-grid {
+                display: grid;
+                grid-template-columns: 1fr !important; /* Força 1 coluna */
+                gap: 30px;
+            }
+
+            /* Skills: Empilha as colunas de skills */
+            .skills-table {
+                display: flex;
+                flex-direction: column;
+            }
+            .skill-column {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+
+            /* Formulário: Garante que os campos ocupem a largura toda */
+            .contact-form input, 
+            .contact-form textarea {
+                width: 100%;
+                box-sizing: border-box; /* Garante que o padding não aumente a largura */
+            }
+            
+            /* Ajuste de tipografia para telas pequenas */
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- HEADER SECTION -->
 <header>
     <div class="container">
-        <!--💡UPDATE: Change to your name and title-->
         <h1>Gustavo Tundisi</h1>
         <p>Análise de Dados | Business Intelligence | Ciência de Dados </p>
         <div class="social-links">
-            <!--💡UPDATE: Add your social media links and CV file-->
             <a href="https://www.linkedin.com/in/gustavo-tundisi-787395220/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/GustavoTundisi" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
         </div>
     </div>
 </header>
 
-<!-- NAVIGATION -->
 <nav>
     <div class="container">
         <ul>
@@ -49,33 +107,26 @@
     </div>
 </nav>
 
-<!-- ABOUT SECTION -->
 <section id="about" class="section">
     <div class="container">
         <h2>Sobre Mim</h2>
         <div class="about-content">
-            <!--💡UPDATE: Change the image to your own profile photo in assets/images/-->
             <img src="assets/images/profile.png" alt="Gustavo Tundisi" class="profile-photo">
             <div class="about-text">
-                <!--💡UPDATE: Write your own 'About Me' text here-->
-               <p>Sou um analista de dados em formação focado em transformar conjuntos de dados complexos em diagnósticos precisos. Meus estudos concentram-se na utilização de dados para a resolução de problemas reais, ajudando a embasar a tomada de decisões estratégicas.</p>
+                <p>Sou um analista de dados em formação focado em transformar conjuntos de dados complexos em diagnósticos precisos. Meus estudos concentram-se na utilização de dados para a resolução de problemas reais, ajudando a embasar a tomada de decisões estratégicas.</p>
 
-               <p>Desenvolvendo competências em Python, SQL e Power BI, busco não apenas visualizar, mas identificar padrões e tendências ocultas através da análise de dados.</p>
+                <p>Desenvolvendo competências em Python, SQL e Power BI, busco não apenas visualizar, mas identificar padrões e tendências ocultas através da análise de dados.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- PROJECTS SECTION -->
 <section id="projects" class="section">
     <div class="container">
         <h2>Meus Projetos</h2>
         <div class="projects-grid">
 
-            <!--💡UPDATE: Replace this with your own project. Add as many as you like!-->
-            <!-- Project 1 -->
-             <div class="project-card">
-                <!--💡UPDATE: Add a preview image of your project to assets/images/ -->
+            <div class="project-card">
                 <img src="assets/images/project1.png" alt="Preview do Projeto Um">
                 <div class="project-card-content">
                     <h3>Monitoramento e Otimização Logística</h3>
@@ -83,15 +134,12 @@
                         monitorando o ciclo de vida completo do pedido. Desenvolvido em Power BI com uso 
                         de DAX para cálculo de KPIs críticos como OTIF e performance de transportadoras.</p>
                     <div class="project-buttons">
-                        <!--💡UPDATE: Add link to your project's code/documentation on GitHub-->
                         <a href="https://github.com/GustavoTundisi/Data-Analytics/blob/main/Logistica/README.md" target="_blank" class="btn">Documentação</a>
-                        <!--💡UPDATE: Add link to your live dashboard (e.g., Power BI, Tableau Public)-->
                         <a href="https://app.powerbi.com/view?r=eyJrIjoiNWZkMDJlNDItOWI4Yy00ZjI0LTg2YmQtNzE5ODQ4MjhiZTllIiwidCI6IjgzYmE0NWIzLTEwYWQtNDQ1Mi1hNDAxLTdiZmQwN2I3NDY4OCJ9" target="_blank" class="btn btn-secondary">Ver Dashboard</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 2 -->
             <div class="project-card">
                 <img src="assets/images/project2.png" alt="Preview do Projeto Dois">
                 <div class="project-card-content">
@@ -105,7 +153,6 @@
                 </div>
             </div>
 
-            <!-- Project 3 -->
             <div class="project-card">
                 <img src="assets/images/project3.png" alt="Preview do Projeto Três">
                 <div class="project-card-content">
@@ -123,14 +170,11 @@
     </div>
 </section>
 
-<!-- SKILLS SECTION -->
 <section id="skills" class="section">
     <div class="container">
         <h2>Skills</h2>
         <div class="skills-table">
             
-            <!--💡UPDATE: Customize your skills in each category-->
-            <!-- Column 1: Data Visualization -->
             <div class="skill-column">
                 <div class="skill-header">
                     <i class="fas fa-chart-pie"></i>
@@ -141,7 +185,6 @@
                 </ul>
             </div>
 
-            <!-- Column 2: Data Analysis -->
             <div class="skill-column">
                 <div class="skill-header">
                     <i class="fas fa-search-plus"></i>
@@ -155,7 +198,6 @@
                 </ul>
             </div>
 
-            <!-- Column 3: Data Modeling & ETL -->
             <div class="skill-column">
                 <div class="skill-header">
                     <i class="fas fa-cogs"></i>
@@ -173,17 +215,12 @@
     </div>
 </section>
 
-<!-- CONTACT FORM SECTION -->
 <section id="contact" class="section">
     <div class="container">
         <h2>Envie uma mensagem</h2>
         
-        <!--💡UPDATE: Go to formsubmit.co and replace the email with your own-->
         <form action="https://formsubmit.co/tundisigustavo.o@gmail.com" method="POST" class="contact-form">
-           <!-- <p> Interested in collaborating or have questions about my work? I'd love to hear from you!</p>-->
-
-            <!-- Form Fields -->
-            <div class="form-group">
+           <div class="form-group">
                 <label for="name">Nome</label>
                 <input type="text" name="name" id="name" placeholder="Your name" required>
             </div>
@@ -200,17 +237,14 @@
                 <textarea name="message" id="message" rows="6" placeholder="Your message" required></textarea>
             </div>
             
-            <!-- Submit Button -->
             <button type="submit" class="btn">Enviar Mensagem</button>
 
         </form>
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
     <div class="container">
-        <!--💡UPDATE: Change the year and your name-->
         <p>&copy; 2026 Gustavo Tundisi. Todos os direitos reservados.</p>
     </div>
 </footer>
