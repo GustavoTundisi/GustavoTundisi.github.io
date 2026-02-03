@@ -15,13 +15,102 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* Regra geral para imagens */
+        img { max-width: 100%; height: auto; }
+
+        /* AJUSTE DO CABEÇALHO (Mais compacto no Desktop) */
+        header {
+            padding: 30px 0; /* Reduzido de 60px/100px para 30px */
+        }
+        header h1 {
+            font-size: 2.5rem; /* Reduzido levemente */
+            margin-bottom: 5px; /* Menos espaço entre nome e cargo */
+        }
+        header p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        /* Botão do Menu (Invisível no PC) */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 10px;
+            /* Cor Branca para aparecer no fundo azul */
+            color: #ffffff !important; 
+            border: 1px solid rgba(255,255,255,0.3); /* Borda sutil para ajudar no clique */
+            border-radius: 5px;
+        }
+
+        /* =========================================
+           MEDIA QUERY: Celulares/Tablets (< 768px) 
+        ========================================= */
+        @media (max-width: 768px) {
+            
+            .container { width: 95%; padding: 0 15px; box-sizing: border-box; }
+
+            /* --- MENU MOBILE --- */
+            nav .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .menu-toggle { display: block; margin-bottom: 15px; }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background-color: #ffffff; /* Fundo BRANCO para a lista */
+                padding: 15px 0;
+                border-radius: 8px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+            
+            /* Cor dos Links no Mobile (Cinza Escuro para ler no fundo branco) */
+            nav ul li a {
+                color: #333333 !important; 
+                font-weight: bold;
+            }
+
+            nav ul.active { display: flex; }
+            nav ul li { margin: 10px 0; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+            nav ul li:last-child { border-bottom: none; }
+
+            /* --- IMAGENS DOS PROJETOS (Ajuste Mobile) --- */
+            .project-card img {
+                max-height: 220px; 
+                width: 100%; 
+                object-fit: contain; 
+                display: block;
+                margin: 0 auto 15px auto;
+                background-color: #fcfcfc;
+                border-radius: 8px;
+            }
+
+            /* Outros ajustes mobile */
+            .about-content { flex-direction: column; text-align: center; }
+            .about-text { padding-left: 0; margin-top: 20px; }
+            .projects-grid { grid-template-columns: 1fr !important; gap: 30px; }
+            .skills-table { flex-direction: column; }
+            .skill-column { width: 100%; margin-bottom: 30px; }
+            .contact-form input, .contact-form textarea { width: 100%; box-sizing: border-box; }
+            
+            /* Reduz ainda mais a fonte no celular se precisar */
+            header h1 { font-size: 2rem; }
+        }
+    </style>
 </head>
 <body>
 
 <header>
     <div class="container">
-        <h1 id="header-name">Gustavo Tundisi</h1>
-        <p id="header-title" data-i18n="header-title">Análise de Dados | Business Intelligence | Ciência de Dados </p>
+        <h1>Gustavo Tundisi</h1>
+        <p>Análise de Dados | Business Intelligence | Ciência de Dados </p>
         <div class="social-links">
             <a href="https://www.linkedin.com/in/gustavo-tundisi-787395220/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/GustavoTundisi" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
@@ -32,28 +121,25 @@
 <nav>
     <div class="container">
         <div class="menu-toggle" id="mobile-menu">
-            <i class="fas fa-bars"></i> <span data-i18n="nav-menu">MENU</span>
+            <i class="fas fa-bars"></i> MENU
         </div>
         <ul class="nav-list">
-            <li><a href="#about" data-i18n="nav-about">Sobre</a></li>
-            <li><a href="#projects" data-i18n="nav-projects">Projetos</a></li>
-            <li><a href="#skills" data-i18n="nav-skills">Skills</a></li>
-            <li><a href="#contact" data-i18n="nav-contact">Contato</a></li>
-            <li class="lang-switcher">
-                <button id="lang-btn" class="lang-btn">EN</button>
-            </li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contato</a></li>
         </ul>
     </div>
 </nav>
 
 <section id="about" class="section">
     <div class="container">
-        <h2 data-i18n="about-title">Sobre Mim</h2>
+        <h2>Sobre Mim</h2>
         <div class="about-content">
             <img src="assets/images/profile.png" alt="Gustavo Tundisi" class="profile-photo">
             <div class="about-text">
-                <p data-i18n="about-p1">Sou um analista de dados em formação focado em transformar conjuntos de dados complexos em diagnósticos precisos. Meus estudos concentram-se na utilização de dados para a resolução de problemas reais, ajudando a embasar a tomada de decisões estratégicas.</p>
-                <p data-i18n="about-p2">Desenvolvendo competências em Python, SQL e Power BI, busco não apenas visualizar, mas identificar padrões e tendências ocultas através da análise de dados.</p>
+                <p>Sou um analista de dados em formação focado em transformar conjuntos de dados complexos em diagnósticos precisos. Meus estudos concentram-se na utilização de dados para a resolução de problemas reais, ajudando a embasar a tomada de decisões estratégicas.</p>
+                <p>Desenvolvendo competências em Python, SQL e Power BI, busco não apenas visualizar, mas identificar padrões e tendências ocultas através da análise de dados.</p>
             </div>
         </div>
     </div>
@@ -61,19 +147,19 @@
 
 <section id="projects" class="section">
     <div class="container">
-        <h2 data-i18n="projects-title">Meus Projetos</h2>
+        <h2>Meus Projetos</h2>
         <div class="projects-grid">
 
             <div class="project-card">
                 <img src="assets/images/project1.png" alt="Preview do Projeto Um">
                 <div class="project-card-content">
-                    <h3 data-i18n="project1-name">Monitoramento e Otimização Logística</h3>
-                    <p data-i18n="project1-desc">Dashboard focado na análise de pontualidade (SLA) e identificação de gargalos de distribuição. 
+                    <h3>Monitoramento e Otimização Logística</h3>
+                    <p>Dashboard focado na análise de pontualidade (SLA) e identificação de gargalos de distribuição. 
                         Desenvolvido em Power BI para monitorar o status de entregas, permitindo a visualização de
                         eficiência por canal de venda, região geográfica e sazonalidade mensal.</p>
                     <div class="project-buttons">
-                        <a href="https://github.com/GustavoTundisi/Data-Analytics/blob/main/Logistica/README.md" target="_blank" class="btn" data-i18n="btn-doc" id="doc-btn-1">Documentação</a>
-                        <a href="https://app.powerbi.com/view?r=eyJrIjoiNWZkMDJlNDItOWI4Yy00ZjI0LTg2YmQtNzE5ODQ4MjhiZTllIiwidCI6IjgzYmE0NWIzLTEwYWQtNDQ1Mi1hNDAxLTdiZmQwN2I3NDY4OCJ9" target="_blank" class="btn btn-secondary" data-i18n="btn-dash">Ver Dashboard</a>
+                        <a href="https://github.com/GustavoTundisi/Data-Analytics/blob/main/Logistica/README.md" target="_blank" class="btn">Documentação</a>
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiNWZkMDJlNDItOWI4Yy00ZjI0LTg2YmQtNzE5ODQ4MjhiZTllIiwidCI6IjgzYmE0NWIzLTEwYWQtNDQ1Mi1hNDAxLTdiZmQwN2I3NDY4OCJ9" target="_blank" class="btn btn-secondary">Ver Dashboard</a>
                     </div>
                 </div>
             </div>
@@ -81,13 +167,13 @@
             <div class="project-card">
                 <img src="assets/images/project2.png" alt="Preview do Projeto Dois">
                 <div class="project-card-content">
-                    <h3 data-i18n="project2-name">Análise de Performance de Campanhas e ROI</h3>
-                    <p data-i18n="project2-desc">Painel de Business Intelligence para mapeamento do Perfil de Cliente Ideal e análise de efetividade de campanhas. Desenvolvido em Power BI,
+                    <h3>Análise de Performance de Campanhas e ROI</h3>
+                    <p>Painel de Business Intelligence para mapeamento do Perfil de Cliente Ideal e análise de efetividade de campanhas. Desenvolvido em Power BI,
                         permite cruzar dados demográficos (renda, estrutura familiar) com histórico de compras para identificar padrões de consumo e segmentar 
                         o público-alvo com maior potencial de conversão.</p>
                     <div class="project-buttons">
-                        <a href="https://github.com/GustavoTundisi/Data-Analytics/tree/main/Marketing-Analytics#readme" target="_blank" class="btn" data-i18n="btn-doc" id="doc-btn-2">Documentação</a>
-                        <a href="https://app.powerbi.com/view?r=eyJrIjoiMzIzMjgyYWUtNjkwNS00NjMyLTliZjItMDdhYzExZDQxMDlhIiwidCI6IjgzYmE0NWIzLTEwYWQtNDQ1Mi1hNDAxLTdiZmQwN2I3NDY4OCJ9" target="_blank" class="btn btn-secondary" data-i18n="btn-dash">Ver Dashboard</a>
+                        <a href="https://github.com/GustavoTundisi/Data-Analytics/tree/main/Marketing-Analytics#readme" target="_blank" class="btn">Documentação</a>
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiMzIzMjgyYWUtNjkwNS00NjMyLTliZjItMDdhYzExZDQxMDlhIiwidCI6IjgzYmE0NWIzLTEwYWQtNDQ1Mi1hNDAxLTdiZmQwN2I3NDY4OCJ9" target="_blank" class="btn btn-secondary">Ver Dashboard</a>
                     </div>
                 </div>
             </div>
@@ -95,13 +181,13 @@
             <div class="project-card">
                 <img src="assets/images/project3.png" alt="Preview do Projeto Três">
                 <div class="project-card-content">
-                    <h3 data-i18n="project3-name">Segmentação Inteligente de Clientes com Machine Learning</h3>
-                    <p data-i18n="project3-desc">Solução que integra a modelagem estatística em Python (algoritmo K-Means) com a visualização no Power BI. 
+                    <h3>Segmentação Inteligente de Clientes com Machine Learning</h3>
+                    <p>Solução que integra a modelagem estatística em Python (algoritmo K-Means) com a visualização no Power BI. 
                         Substitui a segmentação tradicional pela identificação matemática de clusters baseados em Renda, 
                         Idade e Score de Gastos, revelando perfis de consumo ocultos para personalização de campanhas.</p>
                     <div class="project-buttons">
-                        <a href="https://github.com/GustavoTundisi/Data-Analytics/tree/main/Segmentacao-Clientes-ML#readme" target="_blank" class="btn" data-i18n="btn-doc" id="doc-btn-3">Documentação</a>
-                        <a href="https://app.powerbi.com/view?r=eyJrIjoiN2UyMzdkODAtOGE1ZS00YWY4LTk3MjQtMWQwNjYwZjM5OWUwIiwidCI6IjgzYmE0NWIzLTEwYWQtNDQ1Mi1hNDAxLTdiZmQwN2I3NDY4OCJ9" target="_blank" class="btn btn-secondary" data-i18n="btn-dash">Ver Dashboard</a>
+                        <a href="https://github.com/GustavoTundisi/Data-Analytics/tree/main/Segmentacao-Clientes-ML#readme" target="_blank" class="btn">Documentação</a>
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiN2UyMzdkODAtOGE1ZS00YWY4LTk3MjQtMWQwNjYwZjM5OWUwIiwidCI6IjgzYmE0NWIzLTEwYWQtNDQ1Mi1hNDAxLTdiZmQwN2I3NDY4OCJ9" target="_blank" class="btn btn-secondary">Ver Dashboard</a>
                     </div>
                 </div>
             </div>
@@ -112,12 +198,12 @@
 
 <section id="skills" class="section">
     <div class="container">
-        <h2 data-i18n="skills-title">Skills</h2>
+        <h2>Skills</h2>
         <div class="skills-table">
             <div class="skill-column">
                 <div class="skill-header">
                     <i class="fas fa-chart-pie"></i>
-                    <h3 data-i18n="skill-cat1">Visualização de Dados</h3>
+                    <h3>Visualização de Dados</h3>
                 </div>
                 <ul class="skill-list">
                     <li>Power BI</li>
@@ -126,7 +212,7 @@
             <div class="skill-column">
                 <div class="skill-header">
                     <i class="fas fa-search-plus"></i>
-                    <h3 data-i18n="skill-cat2">Análise de Dados</h3>
+                    <h3>Análise de Dados</h3>
                 </div>
                 <ul class="skill-list">
                     <li>SQL</li>
@@ -138,7 +224,7 @@
             <div class="skill-column">
                 <div class="skill-header">
                     <i class="fas fa-cogs"></i>
-                    <h3 data-i18n="skill-cat3">Modelagem de Dados & ETL</h3>
+                    <h3>Modelagem de Dados & ETL</h3>
                 </div>
                 <ul class="skill-list">
                     <li>Power Query (M)</li>
@@ -153,36 +239,50 @@
 
 <section id="contact" class="section">
     <div class="container">
-        <h2 data-i18n="contact-title">Envie uma mensagem</h2>
+        <h2>Envie uma mensagem</h2>
         <form action="https://formsubmit.co/198d5553502507253980affd77f54081" method="POST" class="contact-form">
             <div class="form-group">
-                <label for="name" data-i18n="label-name">Nome</label>
-                <input type="text" name="name" id="name" placeholder="Seu Nome" data-i18n-placeholder="placeholder-name" required>
+                <label for="name">Nome</label>
+                <input type="text" name="name" id="name" placeholder="Seu Nome" required>
             </div>
             <div class="form-group">
-                <label for="email" data-i18n="label-email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Seu Email" data-i18n-placeholder="placeholder-email" required>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Seu Email" required>
             </div>
             <div class="form-group">
-                <label for="subject" data-i18n="label-subject">Assunto</label>
-                <input type="text" name="subject" id="subject" placeholder="Assunto" data-i18n-placeholder="placeholder-subject" required>
+                <label for="subject">Assunto</label>
+                <input type="text" name="subject" id="subject" placeholder="Assunto" required>
             </div>
             <div class="form-group">
-                <label for="message" data-i18n="label-message">Mensagem</label>
-                <textarea name="message" id="message" rows="6" placeholder="Sua Mensagem" data-i18n-placeholder="placeholder-message" required></textarea>
+                <label for="message">Mensagem</label>
+                <textarea name="message" id="message" rows="6" placeholder="Sua Mensagem" required></textarea>
             </div>
-            <button type="submit" class="btn" data-i18n="btn-send">Enviar Mensagem</button>
+            <button type="submit" class="btn">Enviar Mensagem</button>
         </form>
     </div>
 </section>
 
 <footer>
     <div class="container">
-        <p id="footer-copy" data-i18n="footer-copy">&copy; 2026 Gustavo Tundisi. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Gustavo Tundisi. Todos os direitos reservados.</p>
     </div>
 </footer>
 
-<script src="assets/js/translations.js"></script>
+<script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navList = document.querySelector('.nav-list');
+
+    mobileMenu.addEventListener('click', () => {
+        navList.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-list li a').forEach(link => {
+        link.addEventListener('click', () => {
+            navList.classList.remove('active');
+        });
+    });
+</script>
+
 <script src="assets/js/main.js"></script>
 
 </body>
