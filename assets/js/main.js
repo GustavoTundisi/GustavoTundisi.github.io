@@ -1,15 +1,56 @@
-// Main navigation functionality
+// --- Language Switcher Logic ---
+let currentLang = 'pt-br';
+
+function updateLanguage(lang) {
+    currentLang = lang;
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+        }
+    });
+
+    const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
+    placeholders.forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang][key]) {
+            el.placeholder = translations[lang][key];
+        }
+    });
+
+    // Special cases
+    document.getElementById('header-title').innerText = translations[lang]['header-title'];
+    document.getElementById('footer-copy').innerHTML = translations[lang]['footer-copy'];
+    
+    // Update button text
+    const langBtn = document.getElementById('lang-btn');
+    langBtn.innerText = lang === 'pt-br' ? 'EN' : 'PT';
+    
+    // Update HTML lang attribute
+    document.documentElement.lang = lang;
+}
+
+// --- Main functionality ---
 document.addEventListener('DOMContentLoaded', function() {
+    // Language toggle button
+    const langBtn = document.getElementById('lang-btn');
+    if (langBtn) {
+        langBtn.addEventListener('click', () => {
+            const newLang = currentLang === 'pt-br' ? 'en' : 'pt-br';
+            updateLanguage(newLang);
+        });
+    }
+
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
 
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
+                e.preventDefault();
                 targetElement.scrollIntoView({
                     behavior: 'smooth'
                 });
@@ -17,36 +58,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Mobile menu toggle (if you add one later)
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    if (mobileMenuButton) {
-        mobileMenuButton.addEventListener('click', function() {
-            const nav = document.querySelector('nav ul');
-            nav.classList.toggle('active');
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navList = document.querySelector('.nav-list');
+
+    if (mobileMenu && navList) {
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-list li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
         });
     }
-
-    // Add active class to current navigation item
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('nav ul li a').forEach(link => {
-        const linkPage = link.getAttribute('href').split('/').pop() || 'index.html';
-        if (linkPage === currentPage) {
-            link.classList.add('active');
-        }
-    });
-
-    // Project page specific functionality
-    if (window.location.pathname.includes('projects/')) {
-        // Add any project-specific JavaScript here
-        console.log('Project page loaded');
-    }
 });
-
-// Function to handle Power BI dashboard embedding
-function embedPowerBIDashboard() {
-    // This would be replaced with actual Power BI embedding code
-    console.log('Power BI dashboard embedded');
-}
-
-// Initialize any additional components
-document.addEventListener('DOMContentLoaded', embedPowerBIDashboard);
