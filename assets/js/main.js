@@ -9,7 +9,7 @@ function updateLanguage(lang) {
 
     currentLang = lang;
     
-    // Update elements with data-i18n
+    // 1. Atualiza textos (innerHTML)
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -18,7 +18,7 @@ function updateLanguage(lang) {
         }
     });
 
-    // Update placeholders
+    // 2. Atualiza Placeholders
     const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
     placeholders.forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
@@ -27,7 +27,22 @@ function updateLanguage(lang) {
         }
     });
 
-    // Special cases
+    // 3. ATUALIZAÇÃO DOS LINKS (HREF)
+    // Verifica se existem os links na tradução antes de tentar aplicar
+    if (translations[lang]['url-doc-1']) {
+        const btn1 = document.getElementById('doc-btn-1');
+        if (btn1) btn1.href = translations[lang]['url-doc-1'];
+    }
+    if (translations[lang]['url-doc-2']) {
+        const btn2 = document.getElementById('doc-btn-2');
+        if (btn2) btn2.href = translations[lang]['url-doc-2'];
+    }
+    if (translations[lang]['url-doc-3']) {
+        const btn3 = document.getElementById('doc-btn-3');
+        if (btn3) btn3.href = translations[lang]['url-doc-3'];
+    }
+
+    // 4. Casos especiais (Título e Footer)
     const headerTitle = document.getElementById('header-title');
     if (headerTitle && translations[lang]['header-title']) {
         headerTitle.innerText = translations[lang]['header-title'];
@@ -38,57 +53,11 @@ function updateLanguage(lang) {
         footerCopy.innerHTML = translations[lang]['footer-copy'];
     }
     
-    // Update button text to the OTHER language
+    // Atualiza o texto do botão de idioma
     const langBtn = document.getElementById('lang-btn');
     if (langBtn) {
         langBtn.innerText = lang === 'pt-br' ? 'EN' : 'PT';
     }
-    
-    // Update HTML lang attribute
+
     document.documentElement.lang = lang;
 }
-
-// --- Main functionality ---
-document.addEventListener('DOMContentLoaded', function() {
-    // Language toggle button
-    const langBtn = document.getElementById('lang-btn');
-    if (langBtn) {
-        langBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const newLang = currentLang === 'pt-br' ? 'en' : 'pt-br';
-            updateLanguage(newLang);
-        });
-    }
-
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                e.preventDefault();
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // Mobile menu toggle
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navList = document.querySelector('.nav-list');
-
-    if (mobileMenu && navList) {
-        mobileMenu.addEventListener('click', () => {
-            navList.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav-list li a').forEach(link => {
-            link.addEventListener('click', () => {
-                navList.classList.remove('active');
-            });
-        });
-    }
-});
