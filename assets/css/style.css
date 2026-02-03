@@ -1,4 +1,3 @@
-
 /* --- 1. Variables (Modern Tech Palette) --- */
 :root {
     --primary-color: #1A2A4C;   /* Midnight Blue */
@@ -229,10 +228,11 @@ nav ul li a:hover::after {
     text-align: justify;
 }
 
-/* --- 5.5 Project Cards --- */
+/* --- 5.5 Project Cards (CORRIGIDO) --- */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    /* Ajustado para 300px para caber melhor 3 colunas */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 30px;
 }
 
@@ -254,8 +254,8 @@ nav ul li a:hover::after {
 
 .project-card img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: 200px; /* Garante altura fixa */
+    object-fit: cover; /* Garante que a imagem não estique */
     transition: transform 0.5s ease;
 }
 
@@ -427,7 +427,7 @@ footer p {
     font-size: 0.9rem;
 }
 
-/* --- 9. Language Switcher --- */
+/* --- 9. Language Switcher (Botão Padrão Desktop) --- */
 .lang-switcher {
     margin-left: 15px;
 }
@@ -459,7 +459,7 @@ footer p {
     padding: 10px;
 }
 
-/* --- 11. Responsive Design --- */
+/* --- 11. Responsive Design (CORRIGIDO MOBILE) --- */
 @media (max-width: 992px) {
     .skills-table {
         grid-template-columns: 1fr 1fr;
@@ -484,7 +484,8 @@ footer p {
         top: 100%;
         left: 0;
         width: 100%;
-        background: var(--primary-color);
+        /* Correção: Fundo BRANCO no Mobile */
+        background: var(--white-color); 
         flex-direction: column;
         padding: 20px 0;
         text-align: center;
@@ -495,13 +496,31 @@ footer p {
         display: flex;
     }
 
+    /* Links escuros para aparecer no fundo branco */
+    nav ul li a {
+        color: var(--dark-text-color);
+        font-weight: bold;
+    }
+
     nav ul li a::after { display: none; }
 
     .lang-switcher { margin: 15px 0 0 0; }
+    
+    /* Botão de Tradução escuro no Mobile */
+    .lang-btn {
+        color: var(--dark-text-color);
+        border: 1px solid var(--dark-text-color);
+        background: transparent;
+    }
 
     .about-content {
         flex-direction: column;
         text-align: center;
+    }
+
+    /* Correção Grid Mobile */
+    .projects-grid {
+        grid-template-columns: 1fr;
     }
 
     .skills-table {
