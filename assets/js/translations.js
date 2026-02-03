@@ -32,7 +32,11 @@ const translations = {
         'placeholder-message': 'Sua Mensagem',
         'btn-send': 'Enviar Mensagem',
         'footer-copy': '&copy; 2026 Gustavo Tundisi. Todos os direitos reservados.',
-        'header-title': 'Análise de Dados | Business Intelligence | Ciência de Dados'
+        'header-title': 'Análise de Dados | Business Intelligence | Ciência de Dados',
+
+        'url-doc-1': 'https://github.com/GustavoTundisi/Data-Analytics/blob/main/Logistica/README.md',
+        'url-doc-2': 'https://github.com/GustavoTundisi/Data-Analytics/tree/main/Marketing-Analytics#readme',
+        'url-doc-3': 'https://github.com/GustavoTundisi/Data-Analytics/tree/main/Segmentacao-Clientes-ML#readme'
     },
     'en': {
         'nav-about': 'About',
@@ -67,6 +71,10 @@ const translations = {
         'placeholder-message': 'Your Message',
         'btn-send': 'Send Message',
         'footer-copy': '&copy; 2026 Gustavo Tundisi. All rights reserved.',
-        'header-title': 'Data Analysis | Business Intelligence | Data Science'
+        'header-title': 'Data Analysis | Business Intelligence | Data Science',
+
+        'url-doc-1': 'https://github.com/GustavoTundisi/Data-Analytics/blob/main/Logistica/README_en.md',
+        'url-doc-2': 'https://github.com/GustavoTundisi/Data-Analytics/blob/main/Marketing-Analytics/README_en.md',
+        'url-doc-3': 'https://github.com/GustavoTundisi/Data-Analytics/blob/main/Segmentacao-Clientes-ML/README_en.md'
     }
 };
